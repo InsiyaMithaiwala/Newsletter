@@ -32,11 +32,11 @@ app.post("/", function (req, res) {
   };
   const jsonData = JSON.stringify(data);
 
-  const url = "https://us21.api.mailchimp.com/3.0/lists/b2830e7c1c";
+  const url = "https://us21.api.mailchimp.com/3.0/lists/a56bf42227";
 
   const options = {
     method: "POST",
-    auth: "insiya1:da89a314aa55a05f97efd40d5140d3ee-us21",
+    auth: "insiya1:6383237c0e4938f41fbaf9a7a995ec87-us21",
   };
 
   const request = https.request(url, options, function (response) {
@@ -51,7 +51,7 @@ app.post("/", function (req, res) {
     });
   });
 
-  // request.write(jsonData);
+  request.write(jsonData);
   request.end();
 });
 
@@ -59,7 +59,7 @@ app.post("/failure", function (req, res) {
   res.redirect("/");
 });
 
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.log("server is running on port 3000");
 });
 
